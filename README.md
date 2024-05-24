@@ -12,6 +12,10 @@ Used technologies:
 - Three.js
 - Vanilla JavaScript
 
+Project was created with tool:
+
+- Vite
+
 ## Getting Started
 
 First, install all dependencies:
