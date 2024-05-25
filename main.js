@@ -1,3 +1,6 @@
+import { addMoves } from './src/actions/moves';
+import { ground } from './src/scene/ground';
+import { player } from './src/scene/player';
 import './style.css';
 import * as THREE from 'three';
 
@@ -12,22 +15,10 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-/* ground */
-const ground = new THREE.Mesh(
-  new THREE.BoxGeometry(30, 1, 30),
-  new THREE.MeshBasicMaterial({ color: 0x00ff00 })
-);
-ground.position.y = -1;
 scene.add(ground);
-
-/* player red car */
-const player = new THREE.Mesh(
-  new THREE.BoxGeometry(0.5, 0.5, 0.5),
-  new THREE.MeshBasicMaterial({ color: 0xff0000 })
-);
 scene.add(player);
 
-function animate() {
+const animate = () => {
   requestAnimationFrame(animate);
   renderer.render(scene, camera);
 }
@@ -40,11 +31,4 @@ window.addEventListener('resize', () => {
   renderer.setSize(window.innerWidth, window.innerHeight);
 });
 
-window.addEventListener('keydown', (e) => {
-	if (e.key === "D" || e.key === "d" || e.key === "ArrowRight") {
-		player.position.x += 0.1;
-	} 
-	if (e.key === "A" || e.key === "a" || e.key === "ArrowLeft") {
-		player.position.x -= 0.1;
-	} 
-});
+addMoves(player);
