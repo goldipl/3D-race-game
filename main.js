@@ -39,3 +39,12 @@ window.addEventListener('resize', () => {
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
 });
+
+window.addEventListener('keydown', (e) => {
+	if (e.key === "D" || e.key === "d" || e.key === "ArrowRight") {
+		player.position.x += 0.1;
+	} 
+	if (e.key === "A" || e.key === "a" || e.key === "ArrowLeft") {
+		player.position.x -= 0.1;
+	} 
+});
