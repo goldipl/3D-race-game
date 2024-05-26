@@ -1,7 +1,8 @@
 import * as THREE from 'three';
+import grassImg from "./../img/grass.jpg";
 
 const textureLoader = new THREE.TextureLoader();
-const grassTexture = textureLoader.load('./src/img/grass.jpg');
+const grassTexture = textureLoader.load(grassImg);
 
 // Create the material with the loaded texture and darken it by setting a dark color
 const grassMaterial = new THREE.MeshBasicMaterial({
