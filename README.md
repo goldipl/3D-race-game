@@ -36,3 +36,7 @@ npm run dev
 ## Live link :tv:
 
 https://goldipl.github.io/3D-race-game/
+
+## Screenshots
+
+![](./src/screenshots/screenshot01.jpg)
