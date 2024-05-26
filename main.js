@@ -26,8 +26,10 @@ scene.add(gridHelper);
 scene.add(ground);
 scene.add(player);
 
-const randomRangeNumber = (min,max) => {
-  return Math.floor(Math.random() * (max - min + 1) + min);
+const randomRangeNumber = (min, max) => {
+  const randomDecimal = Math.random() * (max - min) + min;
+  const roundedNumber = Math.round(randomDecimal * 2) / 2; // Rounds to the nearest 0.5
+  return roundedNumber;
 }
 
 const moveObjects = (arr, speed, maxX, minX, maxZ, minZ) => {
@@ -45,8 +47,8 @@ const powerups = [];
 for (let i = 0; i < 10; i++) {
   const newPowerup = powerup.clone(); 
   newPowerup.name = "powerup" + (i + 1); 
-  newPowerup.position.x = randomRangeNumber(-8, 8); 
-  newPowerup.position.z = randomRangeNumber(-8, 8); 
+  newPowerup.position.x = randomRangeNumber(-6, 6); 
+  newPowerup.position.z = randomRangeNumber(-6, 6); 
   powerups.push(newPowerup);
   scene.add(newPowerup);
 }
