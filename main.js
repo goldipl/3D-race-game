@@ -1,4 +1,5 @@
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { GridHelper } from 'three';
 import { addMoves } from './src/actions/moves';
 import { ground } from './src/scene/ground';
 import { player } from './src/scene/player';
@@ -18,6 +19,9 @@ document.body.appendChild(renderer.domElement);
 
 /* orbit control */
 const controls = new OrbitControls(camera, renderer.domElement);
+
+const gridHelper = new THREE.GridHelper(30,30);
+scene.add(gridHelper);
 
 scene.add(ground);
 scene.add(player);
