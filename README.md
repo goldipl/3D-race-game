@@ -13,6 +13,7 @@ Used technologies:
 
 - Three.js
 - Vanilla JavaScript
+- Tailwind CSS
 
 Project was created with tool:
 
