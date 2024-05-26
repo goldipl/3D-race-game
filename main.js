@@ -1,3 +1,4 @@
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { addMoves } from './src/actions/moves';
 import { ground } from './src/scene/ground';
 import { player } from './src/scene/player';
@@ -15,12 +16,16 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
+/* orbit control */
+const controls = new OrbitControls(camera, renderer.domElement);
+
 scene.add(ground);
 scene.add(player);
 
 const animate = () => {
   requestAnimationFrame(animate);
   renderer.render(scene, camera);
+  controls.update();
 }
 
 animate();
