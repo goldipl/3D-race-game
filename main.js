@@ -5,13 +5,13 @@ import { player } from './src/scene/player';
 import './style.css';
 import * as THREE from 'three';
 import { powerup } from './src/utils/powerup';
+import { cameraSettings } from './src/settings/settings';
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
-/* camera position */
-camera.position.z = 3.5;
-camera.position.y = 1.9;
+// Camera position
+camera.position.set(cameraSettings.position.x, cameraSettings.position.y, cameraSettings.position.z);
 
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
