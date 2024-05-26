@@ -6,9 +6,12 @@ import './style.css';
 import * as THREE from 'three';
 import { powerup } from './src/utils/powerup';
 import { cameraSettings } from './src/settings/settings';
+import { setSkyBackground } from './src/scene/sky';
 
 const scene = new THREE.Scene();
-scene.background = new THREE.Color(0x00CCFF);
+
+setSkyBackground(scene); // Set the sky background
+
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
 // Camera position
@@ -21,7 +24,7 @@ document.body.appendChild(renderer.domElement);
 /* orbit control */
 const controls = new OrbitControls(camera, renderer.domElement);
 
-const gridHelper = new THREE.GridHelper(30,30);
+const gridHelper = new THREE.GridHelper(30, 30);
 scene.add(gridHelper);
 
 scene.add(ground);
@@ -46,10 +49,10 @@ const moveObjects = (arr, speed, maxX, minX, maxZ, minZ) => {
 const powerups = [];
 
 for (let i = 0; i < 10; i++) {
-  const newPowerup = powerup.clone(); 
-  newPowerup.name = "powerup" + (i + 1); 
-  newPowerup.position.x = randomRangeNumber(-6, 6); 
-  newPowerup.position.z = randomRangeNumber(-6, 6); 
+  const newPowerup = powerup.clone();
+  newPowerup.name = "powerup" + (i + 1);
+  newPowerup.position.x = randomRangeNumber(-6, 6);
+  newPowerup.position.z = randomRangeNumber(-6, 6);
   powerups.push(newPowerup);
   scene.add(newPowerup);
 }
