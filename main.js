@@ -1,17 +1,17 @@
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-import { GridHelper } from 'three';
 import { addMoves } from './src/actions/moves';
 import { ground } from './src/scene/ground';
 import { player } from './src/scene/player';
 import './style.css';
 import * as THREE from 'three';
+import { powerup } from './src/utils/powerup';
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
 /* camera position */
-camera.position.z = 2.2;
-camera.position.y = 1.1;
+camera.position.z = 3.5;
+camera.position.y = 1.9;
 
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -26,8 +26,34 @@ scene.add(gridHelper);
 scene.add(ground);
 scene.add(player);
 
+const randomRangeNumber = (min,max) => {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+const moveObjects = (arr, speed, maxX, minX, maxZ, minZ) => {
+  arr.forEach((el) => {
+    el.position.z += speed;
+    if (el.position.z > camera.position.z) {
+      el.position.x = randomRangeNumber(maxX, minX);
+      el.position.z = randomRangeNumber(maxZ, minZ);
+    } 
+  });
+};
+
+const powerups = [];
+
+for (let i = 0; i < 10; i++) {
+  const newPowerup = powerup.clone(); 
+  newPowerup.name = "powerup" + (i + 1); 
+  newPowerup.position.x = randomRangeNumber(-8, 8); 
+  newPowerup.position.z = randomRangeNumber(-8, 8); 
+  powerups.push(newPowerup);
+  scene.add(newPowerup);
+}
+
 const animate = () => {
   requestAnimationFrame(animate);
+  moveObjects(powerups, 0.02, 8, -8, -10, 8);
   renderer.render(scene, camera);
   controls.update();
 }
