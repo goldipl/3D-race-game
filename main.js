@@ -7,6 +7,7 @@ import * as THREE from 'three';
 import { powerup } from './src/utils/powerup';
 import { cameraSettings } from './src/settings/settings';
 import { setSkyBackground } from './src/scene/sky';
+import { setPointsValue } from './src/utils/points';
 
 const scene = new THREE.Scene();
 
@@ -83,3 +84,6 @@ window.addEventListener('resize', () => {
 });
 
 addMoves(player);
+
+// Points
+setPointsValue(0);
