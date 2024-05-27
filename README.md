@@ -39,4 +39,5 @@ https://goldipl.github.io/3D-race-game/
 
 ## Screenshots
 
+![](./src/screenshots/screenshot02.jpg)
 ![](./src/screenshots/screenshot01.jpg)
