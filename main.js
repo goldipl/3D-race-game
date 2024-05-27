@@ -64,7 +64,17 @@ const animate = () => {
   controls.update();
 }
 
-animate();
+// Hide the starter screen and start the animation
+const startGame = () => {
+  const starterScreen = document.getElementById('starter-screen');
+  const gamePoints = document.getElementById('game-points');
+  starterScreen.style.display = 'none';
+  gamePoints.style.display = 'block';
+  animate();
+}
+
+// Add event listener to the start button
+document.getElementById('start-button').addEventListener('click', startGame);
 
 window.addEventListener('resize', () => {
   camera.aspect = window.innerWidth / window.innerHeight;

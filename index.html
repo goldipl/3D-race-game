@@ -6,9 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>3D Race Game</title>
   </head>
-  <body>
+  <body class="overflow-hidden">
     <main>
-      <h1 class="absolute top-4 left-1/2 text-xl lg:text-3xl font-bold text-white bg-gray-400 px-4 py-2 bg-opacity-25 drop-shadow-lg -translate-x-1/2">Points: <span class="text-2xl lg:text-4xl drop-shadow-lg">00000</span></h1>
+      <h2 id="game-points" class="hidden absolute top-4 left-1/2 text-xl lg:text-3xl font-bold text-white bg-gray-400 px-4 py-2 bg-opacity-25 drop-shadow-lg -translate-x-1/2">Points: <span class="text-2xl lg:text-4xl drop-shadow-lg">00000</span></h2>
+      <div class="h-[100vh]" id="starter-screen">
+        <img class="object-cover h-full w-full" src="./src/img/starter-background.jpg" alt="starter background" width="1621" height="969">
+        <h1 class="absolute top-16 lg:top-64 left-1/2 text-3xl lg:text-6xl drop-shadow-lg -translate-x-1/2 text-center">3D Race Game</h1>
+        <button class="absolute top-48 lg:top-96 left-1/2 text-xl lg:text-3xl drop-shadow-lg -translate-x-1/2 border border-1 text-center border-black py-2 px-4 hover:bg-slate-50" id="start-button">Start Game</button>
+      </div>
     </main>
     <script type="module" src="./main.js"></script>
   </body>
