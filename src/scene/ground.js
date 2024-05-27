@@ -15,7 +15,7 @@ export const ground = new THREE.Mesh(
     grassMaterial
 );
 
-ground.position.y = -1;
+ground.position.y = -0.7;
 
 grassTexture.wrapS = THREE.RepeatWrapping;
 grassTexture.wrapT = THREE.RepeatWrapping;
