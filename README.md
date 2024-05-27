@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="./public/javascript.svg" height="60"/>
+    <img src="./src/screenshots/game-readme-logo.jpg" height="100"/>
 </p>
 
 <h1 align="center">3D Race Game</h1>
