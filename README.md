@@ -5,15 +5,12 @@
 <h1 align="center">3D Race Game</h1>
 <p align="center">Wanna have some fun? Come on & let's play this game!</p>
 
-<p align="center">:construction: Application in progress :construction:</p>
-
 ## Technologies :gear:
 
 Used technologies:
 
 - Three.js
 - Vanilla JavaScript
-- Tailwind CSS
 
 Project was created with tool:
 
