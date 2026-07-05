@@ -1,10 +1,59 @@
+import { gameSettings } from '../settings/settings';
+
+export const inputState = {
+    left: false,
+    right: false,
+    forward: false,
+    back: false,
+    boost: false,
+};
+
 export const addMoves = (player) => {
     window.addEventListener('keydown', (e) => {
-      if (e.key === "D" || e.key === "d" || e.key === "ArrowRight") {
-        player.position.x += 0.5;
-      }
-      if (e.key === "A" || e.key === "a" || e.key === "ArrowLeft") {
-        player.position.x -= 0.5;
-      }
+        const key = e.key.toLowerCase();
+        if (key === 'd' || key === 'arrowright') inputState.right = true;
+        if (key === 'a' || key === 'arrowleft') inputState.left = true;
+        if (key === 'w' || key === 'arrowup') inputState.forward = true;
+        if (key === 's' || key === 'arrowdown') inputState.back = true;
+        if (key === ' ' || key === 'shift') inputState.boost = true;
     });
-  }
+
+    window.addEventListener('keyup', (e) => {
+        const key = e.key.toLowerCase();
+        if (key === 'd' || key === 'arrowright') inputState.right = false;
+        if (key === 'a' || key === 'arrowleft') inputState.left = false;
+        if (key === 'w' || key === 'arrowup') inputState.forward = false;
+        if (key === 's' || key === 'arrowdown') inputState.back = false;
+        if (key === ' ' || key === 'shift') inputState.boost = false;
+    });
+
+    // Simple touch controls: left/right half of screen tilts the car
+    window.addEventListener('touchstart', (e) => {
+        const x = e.touches[0].clientX;
+        if (x < window.innerWidth / 2) inputState.left = true;
+        else inputState.right = true;
+    });
+    window.addEventListener('touchend', () => {
+        inputState.left = false;
+        inputState.right = false;
+    });
+};
+
+// Called every frame with deltaTime (seconds)
+export const updatePlayerMovement = (player, deltaTime) => {
+    const lateralSpeed = 4.0; // units per second
+    const bound = gameSettings.playerXBound;
+
+    if (inputState.left) player.position.x -= lateralSpeed * deltaTime;
+    if (inputState.right) player.position.x += lateralSpeed * deltaTime;
+
+    player.position.x = Math.max(-bound, Math.min(bound, player.position.x));
+
+    // Slight tilt/lean into turns for a more dynamic feel
+    const targetTilt = inputState.left ? 0.15 : inputState.right ? -0.15 : 0;
+    player.rotation.z += (targetTilt - player.rotation.z) * Math.min(1, deltaTime * 8);
+
+    // Slight forward/back bob (visual only, track scroll speed handles real forward motion)
+    const targetPitch = inputState.forward ? -0.05 : inputState.back ? 0.05 : 0;
+    player.rotation.x += (targetPitch - player.rotation.x) * Math.min(1, deltaTime * 8);
+};

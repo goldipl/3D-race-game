@@ -6,4 +6,7 @@ export const setSkyBackground = (scene) => {
     loader.load(skyImg, (texture) => {
         scene.background = texture;
     });
+
+    // Fog gives a sense of speed and hides pop-in of spawning objects
+    scene.fog = new THREE.Fog(0x87ceeb, 20, 90);
 };
