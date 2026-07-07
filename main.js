@@ -2,7 +2,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { addMoves, updatePlayerMovement, inputState } from './src/actions/moves';
 import { ground, road, createLaneMarkings } from './src/scene/ground';
 import { player } from './src/scene/player';
-import './style.css';
+import './src/css/style.css';
 import * as THREE from 'three';
 import { powerup } from './src/utils/powerup';
 import { createObstacle } from './src/utils/obstacle';
@@ -89,12 +89,17 @@ let lastTime = performance.now();
 const showGameOverScreen = () => {
     const gameOverScreen = document.getElementById('gameover-screen');
     const finalScore = document.getElementById('final-score');
+
     finalScore.innerText = document.querySelector('#game-points span').innerText;
+
     gameOverScreen.style.display = 'flex';
+
     document.getElementById('game-points').style.display = 'none';
     document.getElementById('game-lives').style.display = 'none';
     document.getElementById('game-speed').style.display = 'none';
     document.getElementById('boost-meter').style.display = 'none';
+
+    toggleMobileControls(false);
 };
 
 const animate = () => {
@@ -135,6 +140,14 @@ const animate = () => {
     controls.update();
 };
 
+const toggleMobileControls = (show) => {
+    const mobileControls = document.getElementById('mobile-controls');
+
+    if (!mobileControls) return;
+
+    mobileControls.classList.toggle('active', show);
+};
+
 const startGame = () => {
     const starterScreen = document.getElementById('starter-screen');
     const gamePoints = document.getElementById('game-points');
@@ -148,6 +161,8 @@ const startGame = () => {
     gameSpeed.style.display = 'block';
     boostMeter.style.display = 'block';
 
+    toggleMobileControls(true);
+
     player.position.set(0, 0.25, 0);
     setPointsValue(0);
     resetGameState();
@@ -160,6 +175,8 @@ const restartGame = () => {
     const gameLives = document.getElementById('game-lives');
     const gameSpeed = document.getElementById('game-speed');
     const boostMeter = document.getElementById('boost-meter');
+
+    toggleMobileControls(true);
 
     gameOverScreen.style.display = 'none';
     gamePoints.style.display = 'block';
