@@ -255,7 +255,7 @@ kbd {
 }
 
 #mobile-controls.active {
-  display: flex;
+  display: none;
 }
 
 .mobile-control-btn,
