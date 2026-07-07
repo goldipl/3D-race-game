@@ -4,16 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Neon Highway — 3D Driving Game</title>
-  <script type="module" crossorigin src="/3D-race-game/assets/index-BylyFbH-.js"></script>
-  <link rel="stylesheet" crossorigin href="/3D-race-game/assets/index-D5kilRUB.css">
+  <script type="module" crossorigin src="/3D-race-game/assets/index-DF7mAx7T.js"></script>
+  <link rel="stylesheet" crossorigin href="/3D-race-game/assets/index-CKf4zfCy.css">
 </head>
 <body>
     <div id="starter-screen">
         <h1>🏎️ NEON HIGHWAY</h1>
         <p>Dodge cones. Grab rings. Don't crash.</p>
-        <div class="controls-hint">
-            <div><kbd>A</kbd><kbd>D</kbd> or <kbd>←</kbd><kbd>→</kbd> — Steer</div>
-            <div><kbd>Space</kbd> / <kbd>Shift</kbd> — Boost</div>
+        <div class="controls-hint controls-hint--desktop">
+            <div class="controls-hint__slot">
+                <kbd>A</kbd><kbd>D</kbd> or <kbd>←</kbd><kbd>→</kbd> — Steer
+            </div>
+            <div class="controls-hint__slot">
+                <kbd>Space</kbd> / <kbd>Shift</kbd> — Boost
+            </div>
+        </div>
+
+        <div class="controls-hint controls-hint--mobile">
+            <div class="controls-hint__slot">
+                <kbd>Tap Left</kbd> — Move Left
+            </div>
+            <div class="controls-hint__slot">
+                <kbd>Tap Right</kbd> — Move Right
+            </div>
+            <div class="controls-hint__slot">
+                <kbd>Hold</kbd> — Boost
+            </div>
         </div>
         <button id="start-button">Start Driving</button>
     </div>
