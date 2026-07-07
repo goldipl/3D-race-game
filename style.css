@@ -68,6 +68,31 @@ canvas {
   color: #a9adcf;
 }
 
+.controls-hint__slot {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.controls-hint--mobile {
+  display: none;
+}
+
+.controls-hint--desktop {
+  display: block;
+}
+
+@media (pointer: coarse), (hover: none) {
+  .controls-hint--desktop {
+    display: none;
+  }
+
+  .controls-hint--mobile {
+    display: block;
+  }
+}
+
 kbd {
   background: #2a2a45;
   border: 1px solid #4a4a75;
