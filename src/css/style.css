@@ -300,7 +300,7 @@ kbd {
   transform: scale(0.9);
 }
 
-@media (pointer: coarse), (hover: none) {
+@media (max-width: 768px) {
   #mobile-controls.active {
     display: flex;
   }
